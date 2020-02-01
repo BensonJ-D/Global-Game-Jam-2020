@@ -4,7 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Platform
+=======
+  - ground
+  - Player2
+  - Player1
+>>>>>>> 9f8d67f36d6dbfd5878a199899dcc1c49c685332
   layers:
   - Default
   - TransparentFX
