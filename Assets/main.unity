@@ -763,7 +763,7 @@ HingeJoint2D:
   m_GameObject: {fileID: 1550098998}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 1286366623}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1222,7 +1222,7 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 295060128}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0.43194202, y: 0.0000030290073}
   m_ConnectedAnchor: {x: -0.8500828, y: -0.02285281}
   m_UseMotor: 0
@@ -1671,7 +1671,7 @@ PrefabInstance:
     - target: {fileID: 7715014017960875452, guid: 024524d3e6c3e4d3cb6f576561825df2,
         type: 3}
       propertyPath: m_AngularDrag
-      value: 600
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 024524d3e6c3e4d3cb6f576561825df2, type: 3}
