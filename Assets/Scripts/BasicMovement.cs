@@ -36,7 +36,7 @@ public class BasicMovement : MonoBehaviour
         if(Player == 1)
         {
             transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(-Input.GetAxisRaw("Axis 11 Player 1"), 0f), ForceMode2D.Impulse);
-            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, -Input.GetAxisRaw("Axis 12 Player 1")), ForceMode2D.Impulse);
+            //transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, -Input.GetAxisRaw("Axis 12 Player 1")), ForceMode2D.Impulse);
 
             if (Input.GetButtonDown("Jump Player 1") && jumps > 0){
                 gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60f, ForceMode2D.Impulse);
@@ -57,7 +57,7 @@ public class BasicMovement : MonoBehaviour
         else
         {
             transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(Input.GetAxisRaw("Axis 11 Player 2") * 2f, 0f), ForceMode2D.Impulse);
-            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, -Input.GetAxisRaw("Axis 12 Player 2") * 2f), ForceMode2D.Impulse);
+            //transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, -Input.GetAxisRaw("Axis 12 Player 2") * 2f), ForceMode2D.Impulse);
 
             if (Input.GetButtonDown("Jump Player 2") && jumps > 0)
             {

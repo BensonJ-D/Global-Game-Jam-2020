@@ -3731,6 +3731,11 @@ PrefabInstance:
       propertyPath: force
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2429275870259418410, guid: 33201026d034c4021adf291dca442bbe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2853014901295591749, guid: 33201026d034c4021adf291dca442bbe,
         type: 3}
       propertyPath: m_Mass
@@ -3750,6 +3755,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerOneBody
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128732967661498405, guid: 33201026d034c4021adf291dca442bbe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5991850324090571800, guid: 33201026d034c4021adf291dca442bbe,
         type: 3}
@@ -4860,7 +4870,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7393343774174446987}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -5195,7 +5205,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7393343774552348247}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -5310,7 +5320,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7103684058273049579}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
