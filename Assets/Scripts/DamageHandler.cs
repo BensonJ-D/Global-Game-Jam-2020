@@ -7,15 +7,16 @@ public class DamageHandler : MonoBehaviour
 {
 
     public Vector2 oldVelocity;
-    //public GameObject body;
+    //public GameObject body
+    Rigidbody2D self;
 
     public float damage = 0;    
-    private float fudgeFactor = 40;
+    private float fudgeFactor = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        self = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -41,11 +42,19 @@ public class DamageHandler : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
 {
         string otherHit = other.gameObject.tag;
-        if(otherHit!=gameObject.tag && otherHit != "Platform") {
-            Vector2 impulse = (gameObject.GetComponent<Rigidbody2D>().velocity - oldVelocity)*gameObject.GetComponent<Rigidbody2D>().mass;
-            damage = damage+impulse.magnitude/gameObject.GetComponent<Rigidbody2D>().mass*fudgeFactor;
+        Rigidbody2D otherContact = other.gameObject.GetComponent<Rigidbody2D>();
 
-            gameObject.GetComponent<Rigidbody2D>().AddForce(impulse.normalized*damage);
+        if(otherHit!=gameObject.tag && otherHit != "Platform") {
+            // Vector2 impulse = (gameObject.GetComponent<Rigidbody2D>().velocity - oldVelocity)*gameObject.GetComponent<Rigidbody2D>().mass;
+            // damage = damage+impulse.magnitude/gameObject.GetComponent<Rigidbody2D>().mass*fudgeFactor;
+
+            // gameObject.GetComponent<Rigidbody2D>().AddForce(impulse.normalized*damage, ForceMode2D.Impulse);
+            // Debug.Log(impulse.normalized*damage);
+
+            Vector2 impulse =  (otherContact.velocity.magnitude) < float.Epsilon ? Vector2.zero : (otherContact.velocity * otherContact.mass);
+            damage += Mathf.Abs(impulse.magnitude) * fudgeFactor;
+
+            self.AddForce(impulse * damage, ForceMode2D.Impulse);
         }
     }
 }
