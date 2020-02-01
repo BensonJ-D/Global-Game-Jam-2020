@@ -5,17 +5,21 @@ using UnityEngine;
 public class BasicMovement : MonoBehaviour
 {
     int jumps = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int Player;
+    private bool selfCorrecting; 
 
+    private void FixedUpdate()
+    {
+        if (selfCorrecting)
+        {
+            transform.rotation = new Quaternion(0.5f, 44f, 0f, 0f);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
 
-
+       
 
         //if (Input.GetKey(KeyCode.A))
         //{
@@ -27,13 +31,25 @@ public class BasicMovement : MonoBehaviour
         //    transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
         //    //transform.GetComponentInChildren<Rigidbody2D>().AddRelativeForce(Vector2.right * 5f);
         //}
-        if (Input.GetKeyDown(KeyCode.Space) && jumps>0)
+        if(Player == 1)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 30, ForceMode2D.Impulse);
-            jumps--;
+            if (Input.GetKeyDown(KeyCode.RightCommand) && jumps > 0)
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 30, ForceMode2D.Impulse);
+                jumps--;
+            }
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 30, ForceMode2D.Impulse);
+                jumps--;
+            }
+        }
+        
 
-        transform.position = new Vector2(transform.position.x + (0.1f * Input.GetAxis("Axis 11")), transform.position.y);
+        //transform.position = new Vector2(transform.position.x + (0.1f * Input.GetAxis("Axis 11")), transform.position.y);
 
 
     }
@@ -42,8 +58,14 @@ public class BasicMovement : MonoBehaviour
     {
         if (collision.transform.tag == "Platform")
         {
+            selfCorrecting = false; 
             jumps = 2;
         }
        
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        selfCorrecting = true; 
     }
 }

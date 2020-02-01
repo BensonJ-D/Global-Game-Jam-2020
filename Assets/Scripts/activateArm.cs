@@ -5,47 +5,64 @@ using UnityEngine;
 public class activateArm : MonoBehaviour
 {
     public float force = 0.5f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int Player;
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            //Destroy(gameObject);
-            gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.left * force, ForceMode2D.Impulse);
-
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
+        if(Player == 1)
         {
-            //Destroy(gameObject);
-            gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.right * force, ForceMode2D.Impulse);
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(- Input.GetAxisRaw("Axis 11"), 0f), ForceMode2D.Impulse);
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, - Input.GetAxisRaw("Axis 12")), ForceMode2D.Impulse);
 
-        }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.left * force, ForceMode2D.Impulse);
+
+            }
+
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.right * force, ForceMode2D.Impulse);
+
+            }
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.up * force, ForceMode2D.Impulse);
+
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.down * force, ForceMode2D.Impulse);
+
+            }
+        }else
         {
-            //Destroy(gameObject);
-            gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.up * force, ForceMode2D.Impulse);
+            if (Input.GetKey(KeyCode.A))
+            {
+                gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.left * force, ForceMode2D.Impulse);
 
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            //Destroy(gameObject);
-            gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.down * force, ForceMode2D.Impulse);
+            }
 
+            if (Input.GetKey(KeyCode.D))
+            {
+                gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.right * force, ForceMode2D.Impulse);
+
+            }
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.up * force, ForceMode2D.Impulse);
+
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.down * force, ForceMode2D.Impulse);
+
+            }
         }
+        
 
 
     }

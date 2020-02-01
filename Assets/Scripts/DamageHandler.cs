@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageHandler : MonoBehaviour
 {
+
     public Vector2 oldVelocity;
-    public GameObject body;
+    //public GameObject body;
 
     public float damage = 0;    
     private float fudgeFactor = 40;
@@ -27,7 +29,7 @@ public class DamageHandler : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        Vector2 newVelocity = body.GetComponent<Rigidbody2D>().velocity;
+        Vector2 newVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
         oldVelocity.Set(newVelocity.x, newVelocity.y);
     }
 
@@ -39,11 +41,11 @@ public class DamageHandler : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
 {
         string otherHit = other.gameObject.tag;
-        if(otherHit!=body.tag && otherHit != "ground") {
-            Vector2 impulse = (body.GetComponent<Rigidbody2D>().velocity - oldVelocity)*body.GetComponent<Rigidbody2D>().mass;
-            damage = damage+impulse.magnitude/body.GetComponent<Rigidbody2D>().mass*fudgeFactor;
+        if(otherHit!=gameObject.tag && otherHit != "Platform") {
+            Vector2 impulse = (gameObject.GetComponent<Rigidbody2D>().velocity - oldVelocity)*gameObject.GetComponent<Rigidbody2D>().mass;
+            damage = damage+impulse.magnitude/gameObject.GetComponent<Rigidbody2D>().mass*fudgeFactor;
 
-            body.GetComponent<Rigidbody2D>().AddForce(impulse.normalized*damage);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(impulse.normalized*damage);
         }
     }
 }
