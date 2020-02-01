@@ -11,8 +11,8 @@ public class activateArm : MonoBehaviour
     {
         if(Player == 1)
         {
-            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(- Input.GetAxisRaw("Axis 11"), 0f), ForceMode2D.Impulse);
-            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, - Input.GetAxisRaw("Axis 12")), ForceMode2D.Impulse);
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(- Input.GetAxisRaw("Axis 11 Player 1"), 0f), ForceMode2D.Impulse);
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, - Input.GetAxisRaw("Axis 12 Player 1")), ForceMode2D.Impulse);
 
 
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -39,6 +39,9 @@ public class activateArm : MonoBehaviour
             }
         }else
         {
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(Input.GetAxisRaw("Axis 11 Player 2"), 0f), ForceMode2D.Impulse);
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, - Input.GetAxisRaw("Axis 12 Player 2")), ForceMode2D.Impulse);
+
             if (Input.GetKey(KeyCode.A))
             {
                 gameObject.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.left * force, ForceMode2D.Impulse);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicMovement : MonoBehaviour
 {
-    int jumps = 0;
+    public int jumps = 0;
     public int Player;
     private bool selfCorrecting; 
 
@@ -33,17 +33,34 @@ public class BasicMovement : MonoBehaviour
         //}
         if(Player == 1)
         {
+            if(Input.GetButtonDown("Jump Player 1") && jumps > 0){
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60f, ForceMode2D.Impulse);
+                jumps--;
+            }
+            //if(Input.GetAxisRaw("Jump Player 1") >= 1f)
+            //{
+            //    gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 1f, ForceMode2D.Impulse);
+            //    jumps--;
+            //}
+
             if (Input.GetKeyDown(KeyCode.RightCommand) && jumps > 0)
             {
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 30, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60, ForceMode2D.Impulse);
                 jumps--;
             }
         }
         else
         {
+            if (Input.GetButtonDown("Jump Player 2") && jumps > 0)
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60f, ForceMode2D.Impulse);
+                jumps--;
+
+            }
+
             if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
             {
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 30, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60, ForceMode2D.Impulse);
                 jumps--;
             }
         }
@@ -58,7 +75,7 @@ public class BasicMovement : MonoBehaviour
     {
         if (collision.transform.tag == "Platform")
         {
-            selfCorrecting = false; 
+            selfCorrecting = false;
             jumps = 2;
         }
        

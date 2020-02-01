@@ -43,9 +43,11 @@ public class DamageHandler : MonoBehaviour
         string otherHit = other.gameObject.tag;
         if(otherHit!=gameObject.tag && otherHit != "Platform") {
             Vector2 impulse = (gameObject.GetComponent<Rigidbody2D>().velocity - oldVelocity)*gameObject.GetComponent<Rigidbody2D>().mass;
-            damage = damage+impulse.magnitude/gameObject.GetComponent<Rigidbody2D>().mass*fudgeFactor;
-
-            gameObject.GetComponent<Rigidbody2D>().AddForce(impulse.normalized*damage);
+            if (impulse.x >= 2f || impulse.y >= 2f)
+            {
+                damage = damage + impulse.magnitude / gameObject.GetComponent<Rigidbody2D>().mass * fudgeFactor;
+                gameObject.GetComponent<Rigidbody2D>().AddForce(impulse.normalized * damage);
+            }
         }
     }
 }
