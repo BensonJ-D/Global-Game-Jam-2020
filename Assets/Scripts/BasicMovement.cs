@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BasicMovement : MonoBehaviour
 {
-    bool onGround = false;
     int jumps = 0;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +15,7 @@ public class BasicMovement : MonoBehaviour
     void Update()
     {
 
-        transform.position = new Vector2(transform.position.x + (0.1f * Input.GetAxis("Axis 11")), transform.position.y);
+
 
         //if (Input.GetKey(KeyCode.A))
         //{
@@ -30,9 +29,11 @@ public class BasicMovement : MonoBehaviour
         //}
         if (Input.GetKeyDown(KeyCode.Space) && jumps>0)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60, ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 30, ForceMode2D.Impulse);
             jumps--;
         }
+
+        transform.position = new Vector2(transform.position.x + (0.1f * Input.GetAxis("Axis 11")), transform.position.y);
 
 
     }
@@ -41,7 +42,6 @@ public class BasicMovement : MonoBehaviour
     {
         if (collision.transform.tag == "Platform")
         {
-            onGround = true;
             jumps = 2;
         }
        
