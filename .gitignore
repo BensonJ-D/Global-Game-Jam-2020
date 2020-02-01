@@ -261,6 +261,3 @@ __pycache__/
 *.pyc
 
 Assemblies/Multiplayer.dll
-
-# Build Settings
-Library/EditorUserBuildSettings.asset
