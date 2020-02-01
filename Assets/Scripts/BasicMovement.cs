@@ -14,6 +14,8 @@ public class BasicMovement : MonoBehaviour
     void Update()
     {
 
+        transform.position = new Vector2(transform.position.x + (0.1f * Input.GetAxis("Axis 11")), transform.position.y);
+
         if (Input.GetKey(KeyCode.A))
         {
             transform.position = new Vector2(transform.position.x + -0.1f, transform.position.y);
