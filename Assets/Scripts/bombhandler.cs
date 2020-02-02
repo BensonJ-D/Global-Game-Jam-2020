@@ -22,7 +22,10 @@ public class bombhandler : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.H)) {
             yeeter.GetComponent<HingeJoint2D>().enabled = false;
-            yeeter.GetComponentInChildren<exploder>().thrown = true;
+            yeeter.GetComponentInChildren<Exploder>().thrown = true;
+        }
+        if(yeeter.GetComponentInChildren<Exploder>().thrown == false) {
+            yeeter.GetComponent<HingeJoint2D>().enabled = true;
         }
     }
 }
