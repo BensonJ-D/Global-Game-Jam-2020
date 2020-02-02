@@ -74,6 +74,26 @@ public class WeaponHandler : MonoBehaviour
         }
         else
         {
+            if (Input.GetButtonDown("Player 2 Up"))
+            {
+                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = Up;
+                coolDown = 0.2f;
+                attackDirection = AttackDirection.up;
+
+            }
+            if (Input.GetButtonDown("Player 2 Left"))
+            {
+                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = Left;
+                attackDirection = AttackDirection.left;
+                coolDown = 0.2f;
+            }
+            if (Input.GetButtonDown("Player 2 Right"))
+            {
+                gameObject.GetComponentInChildren<SpriteRenderer>().sprite = Right;
+                coolDown = 0.2f;
+                attackDirection = AttackDirection.right;
+
+            }
 
         }
     }
