@@ -35,11 +35,11 @@ public class BasicMovement : MonoBehaviour
         //}
         if(Player == 1)
         {
-            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(-Input.GetAxisRaw("Axis 11 Player 1"), 0f), ForceMode2D.Impulse);
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(-Input.GetAxisRaw("Axis 11 Player 1") * 2f, 0f), ForceMode2D.Impulse);
             //transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, -Input.GetAxisRaw("Axis 12 Player 1")), ForceMode2D.Impulse);
 
             if (Input.GetButtonDown("Jump Player 1") && jumps > 0){
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60f, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100f, ForceMode2D.Impulse);
                 jumps--;
             }
             //if(Input.GetAxisRaw("Jump Player 1") >= 1f)
@@ -50,7 +50,7 @@ public class BasicMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.RightCommand) && jumps > 0)
             {
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100, ForceMode2D.Impulse);
                 jumps--;
             }
         }
@@ -61,14 +61,14 @@ public class BasicMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Jump Player 2") && jumps > 0)
             {
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60f, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100f, ForceMode2D.Impulse);
                 jumps--;
 
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
             {
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 60, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100, ForceMode2D.Impulse);
                 jumps--;
             }
         }

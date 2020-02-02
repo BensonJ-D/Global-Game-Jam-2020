@@ -6,17 +6,21 @@ using UnityEngine.UI;
 
 public class DamageHandler : MonoBehaviour
 {
-    WeaponHandler weaponHandler;
+    //WeaponHandler weaponHandler;
     public Vector2 oldVelocity;
     //public GameObject body;
     public float healThreshold = 1.0f;
-    public float damage = 0;    
-    private float fudgeFactor = 80;
+    public float damage = 0;
+    float clangCooldown = 0;
+    public AudioSource clang; 
+
+    private float fudgeFactor = 160;
 
     // Start is called before the first frame update
     void Start()
     {
-        weaponHandler = transform.GetComponentInParent<WeaponHandler>();
+        //weaponHandler = transform.GetComponentInParent<WeaponHandler>();
+        
     }
 
     // Update is called once per frame
@@ -30,6 +34,7 @@ public class DamageHandler : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
+        clangCooldown -= Time.deltaTime;
         Vector2 newVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
         oldVelocity.Set(newVelocity.x, newVelocity.y);
         int mylayer = transform.gameObject.layer; 
@@ -42,7 +47,7 @@ public class DamageHandler : MonoBehaviour
             {
                 damage = 0.0f;
             }
-            weaponHandler.GrabWeapon(damage);
+            //weaponHandler.GrabWeapon(damage);
         }
 
 
@@ -53,7 +58,7 @@ public class DamageHandler : MonoBehaviour
             {
                 damage = 0.0f;
             }
-            weaponHandler.GrabWeapon(damage);
+            //weaponHandler.GrabWeapon(damage);
         }
     }
 
@@ -66,6 +71,12 @@ public class DamageHandler : MonoBehaviour
     {
         string otherHit = other.gameObject.tag;
         if(otherHit!=gameObject.tag && otherHit != "Platform") {
+            if (clangCooldown < 0)
+            {
+                clang.pitch = (UnityEngine.Random.Range(0f, 1f)); 
+                clang.Play();
+                clangCooldown = 0.5f;
+            }
             Vector2 impulse = (gameObject.GetComponent<Rigidbody2D>().velocity - oldVelocity)*gameObject.GetComponent<Rigidbody2D>().mass;
             if (impulse.x >= 1f || impulse.y >= 1f)
             {
@@ -73,7 +84,7 @@ public class DamageHandler : MonoBehaviour
                 gameObject.GetComponent<Rigidbody2D>().AddForce(impulse.normalized * damage);
             }
 
-            weaponHandler.WeaponBreak(damage);
+            //weaponHandler.WeaponBreak(damage);
         }
     }
 }
