@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class PlayerHealth : MonoBehaviour
                 gameObject.GetComponentInChildren<Rigidbody2D>().velocity = Vector2.zero; 
                 PlayerContainer.transform.position = new Vector2(0f, 5f);
                 countdown = 1.5f; 
+            }
+            else
+            {
+                SceneManager.LoadScene("StartMenu");
             }
         }
 
