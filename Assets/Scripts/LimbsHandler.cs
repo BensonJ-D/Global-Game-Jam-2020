@@ -7,20 +7,22 @@ public class LimbsHandler : MonoBehaviour
 {
     Transform weapon;
 
-    public Vector2 oldVelocity;
-
+    private void Start()
+    {
+        weapon = transform.GetChild(0);
+    }
 
     void Update()
     {
-        weapon = transform.Find("Weapon");
 
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T) && weapon != null)
         {
             transform.GetComponent<HingeJoint2D>().enabled = false;
             transform.GetComponent<activateArm>().enabled = true;
 
             weapon.SetParent(null);
             weapon.GetComponent<activateArm>().enabled = false;
+            weapon = null;
         }
     }
 
@@ -44,6 +46,8 @@ public class LimbsHandler : MonoBehaviour
             hinge.enabled = true;
 
             transform.GetComponent<activateArm>().enabled = false;
+
+            weapon = transform.GetChild(0);
         }
     }
 }
