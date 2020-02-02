@@ -32,8 +32,10 @@ public class DamageHandler : MonoBehaviour
     {
         Vector2 newVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
         oldVelocity.Set(newVelocity.x, newVelocity.y);
+        int mylayer = transform.gameObject.layer; 
+        String namedLayer = LayerMask.LayerToName(mylayer);
 
-        if (Input.GetKey(KeyCode.Y) && newVelocity.magnitude < healThreshold)
+        if (Input.GetButton(namedLayer+" Heal") && newVelocity.magnitude < healThreshold)
         {
             damage -= 5f;
             if (damage < 0.0f)
