@@ -106,19 +106,19 @@ public class CharacterBuilder : MonoBehaviour
             //Debug.Log(currentlySelecting); 
             if(currentlySelecting == CurrentlySelecting.leftArm)
             {
-                if (Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) < 0)
+                if (Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) < 0 || Input.GetAxisRaw(String.Format("HorizontalPlayer{0}", player)) < 0)
                 {
                     SelectionArrows.transform.position = new Vector2(transform.position.x + 2f, transform.position.y);
                     currentlySelecting = CurrentlySelecting.rightArm;
 
                 }
 
-                if (Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) > 0)
+                if (Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) > 0 || Input.GetAxisRaw(String.Format("HorizontalPlayer{0}", player)) > 0)
                 {
                     SelectionArrows.transform.position = new Vector2(transform.position.x - 2f, transform.position.y);
                     currentlySelecting = CurrentlySelecting.leftArm;
                 }
-                if (Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) < 0)
+                if (Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) < 0 || Input.GetAxisRaw(String.Format("VerticalPlayer{0}", player)) < 0)
                 {
                     if (weaponSelectedLeft + 1 < WeaponsLeft.Length)
                     { 
@@ -127,7 +127,7 @@ public class CharacterBuilder : MonoBehaviour
                     //SelectionArrows.transform.position = new Vector2(transform.position.x + 2f, transform.position.y);
                 }
 
-                if (Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) > 0)
+                if (Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) > 0 || Input.GetAxisRaw(String.Format("VerticalPlayer{0}", player)) > 0)
                 {
                     //SelectionArrows.transform.position = new Vector2(transform.position.x - 2f, transform.position.y);
                     if (weaponSelectedLeft - 1 < WeaponsLeft.Length)
@@ -139,19 +139,19 @@ public class CharacterBuilder : MonoBehaviour
                 makeselection = false;
             }else if(currentlySelecting == CurrentlySelecting.rightArm)
             {
-                if (Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) < 0)
+                if (Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) < 0 || Input.GetAxisRaw(String.Format("HorizontalPlayer{0}", player)) < 0)
                 {
                     SelectionArrows.transform.position = new Vector2(transform.position.x + 2f, transform.position.y);
                     currentlySelecting = CurrentlySelecting.rightArm;
 
                 }
 
-                if (Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) > 0)
+                if (Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) > 0 || Input.GetAxisRaw(String.Format("HorizontalPlayer{0}", player)) > 0)
                 {
                     SelectionArrows.transform.position = new Vector2(transform.position.x - 2f, transform.position.y);
                     currentlySelecting = CurrentlySelecting.leftArm;
                 }
-                if (Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) < 0)
+                if (Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) < 0 || Input.GetAxisRaw(String.Format("VerticalPlayer{0}", player)) < 0)
                 {
                     if (weaponSelectedLeft + 1 < WeaponsLeft.Length)
                     {
@@ -160,7 +160,7 @@ public class CharacterBuilder : MonoBehaviour
                     //SelectionArrows.transform.position = new Vector2(transform.position.x + 2f, transform.position.y);
                 }
 
-                if (Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) > 0)
+                if (Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) > 0 || Input.GetAxisRaw(String.Format("VerticalPlayer{0}", player)) > 0)
                 {
                     //SelectionArrows.transform.position = new Vector2(transform.position.x - 2f, transform.position.y);
                     if (weaponSelectedLeft - 1 < WeaponsLeft.Length)
@@ -172,7 +172,7 @@ public class CharacterBuilder : MonoBehaviour
             }
 
 
-            if (Input.GetButtonDown("Player 1 Right"))
+            if (Input.GetButtonDown("Player 1 Right") || Input.GetKeyDown(KeyCode.Space))
             {
                 Time.timeScale = 1;
                 Destroy(SelectionArrows);
@@ -180,7 +180,7 @@ public class CharacterBuilder : MonoBehaviour
             }
         }
 
-        if(Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) == 0f && Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) == 0f)
+        if(Input.GetAxisRaw(String.Format("Axis 11 Player {0}", player)) == 0f && Input.GetAxisRaw(String.Format("Axis 12 Player {0}", player)) == 0f  && Input.GetAxisRaw(String.Format("VerticalPlayer{0}", player)) == 0f && Input.GetAxisRaw(String.Format("HorizontalPlayer{0}", player)) == 0f)
         {
             makeselection = true; 
         } 

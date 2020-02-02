@@ -21,7 +21,7 @@ public class BasicMovement : MonoBehaviour
     void Update()
     {
 
-       
+
 
         //if (Input.GetKey(KeyCode.A))
         //{
@@ -33,13 +33,19 @@ public class BasicMovement : MonoBehaviour
         //    transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
         //    //transform.GetComponentInChildren<Rigidbody2D>().AddRelativeForce(Vector2.right * 5f);
         //}
-        if(Player == 1)
+
+
+        if (Player == 1)
         {
             transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(-Input.GetAxisRaw("Axis 11 Player 1") * 2f, 0f), ForceMode2D.Impulse);
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(-Input.GetAxisRaw("HorizontalPlayer1") * 2f, 0f), ForceMode2D.Impulse);
+
+            
             //transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, -Input.GetAxisRaw("Axis 12 Player 1")), ForceMode2D.Impulse);
 
+
             if (Input.GetButtonDown("Jump Player 1") && jumps > 0){
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100f, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 70f, ForceMode2D.Impulse);
                 jumps--;
             }
             //if(Input.GetAxisRaw("Jump Player 1") >= 1f)
@@ -48,27 +54,29 @@ public class BasicMovement : MonoBehaviour
             //    jumps--;
             //}
 
-            if (Input.GetKeyDown(KeyCode.RightCommand) && jumps > 0)
+            if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
             {
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 70, ForceMode2D.Impulse);
                 jumps--;
             }
         }
         else
         {
-            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(Input.GetAxisRaw("Axis 11 Player 2") * 2f, 0f), ForceMode2D.Impulse);
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(-Input.GetAxisRaw("Axis 11 Player 2") * 2f, 0f), ForceMode2D.Impulse);
+            transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(-Input.GetAxisRaw("HorizontalPlayer2") * 2f, 0f), ForceMode2D.Impulse);
+
             //transform.GetComponentInChildren<Rigidbody2D>().AddForce(new Vector2(0f, -Input.GetAxisRaw("Axis 12 Player 2") * 2f), ForceMode2D.Impulse);
 
             if (Input.GetButtonDown("Jump Player 2") && jumps > 0)
             {
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100f, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 70f, ForceMode2D.Impulse);
                 jumps--;
 
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
+            if (Input.GetKeyDown(KeyCode.RightCommand) && jumps > 0)
             {
-                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 100, ForceMode2D.Impulse);
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 70f, ForceMode2D.Impulse);
                 jumps--;
             }
         }

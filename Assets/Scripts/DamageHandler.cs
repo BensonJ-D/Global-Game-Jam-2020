@@ -14,7 +14,7 @@ public class DamageHandler : MonoBehaviour
     float clangCooldown = 0;
     public AudioSource clang; 
 
-    private float fudgeFactor = 160;
+    private float fudgeFactor = 110;
 
     // Start is called before the first frame update
     void Start()
