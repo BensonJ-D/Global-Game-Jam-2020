@@ -9,7 +9,7 @@ public class DamageHandler : MonoBehaviour
     WeaponHandler weaponHandler;
     public Vector2 oldVelocity;
     //public GameObject body;
-
+    public float healThreshold = 5.0f;
     public float damage = 0;    
     private float fudgeFactor = 40;
 
@@ -33,9 +33,9 @@ public class DamageHandler : MonoBehaviour
         Vector2 newVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
         oldVelocity.Set(newVelocity.x, newVelocity.y);
 
-        if (Input.GetKey(KeyCode.Y))
+        if (Input.GetKey(KeyCode.Y) && newVelocity.magnitude < healThreshold)
         {
-            damage -= 10f;
+            damage -= 5f;
             if (damage < 0.0f)
             {
                 damage = 0.0f;
