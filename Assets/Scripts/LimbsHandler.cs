@@ -57,6 +57,24 @@ public class LimbsHandler : MonoBehaviour
         }
     }
 
+    public void GrabWeapon(GameObject newWeapon)
+    {
+        Transform weaponTransform = newWeapon.transform;
+        weaponTransform.SetParent(transform);
+        weaponTransform.localPosition = new Vector2(0.5f, 0);
+
+        HingeJoint2D hinge = transform.GetComponent<HingeJoint2D>();
+        hinge.connectedBody = newWeapon.GetComponent<Rigidbody2D>();
+        hinge.autoConfigureConnectedAnchor = true;
+        hinge.enabled = true;
+
+        weapon = transform.GetChild(0);
+
+        SetLayerRecursively(weapon.gameObject, gameObject.layer);
+
+        weapon = weaponTransform;
+    }
+
     public bool HasWeapon()
     {
         return weapon != null;

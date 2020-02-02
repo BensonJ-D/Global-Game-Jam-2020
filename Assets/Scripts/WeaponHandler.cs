@@ -111,7 +111,6 @@ public class WeaponHandler : MonoBehaviour
 
         if (damage > 1500f * (3 - equippedArms.Length))
         {
-            Debug.Log("Break risk!");
             float percentage = (damage - 1500) / 5f;
 
             Debug.Log(percentage);
@@ -119,14 +118,12 @@ public class WeaponHandler : MonoBehaviour
 
             if (limbBreak)
             {
-                Debug.Log("Breaking!");
                 int limb = (int)(Random.Range(0.0f, 100.0f) / 50f);
 
                 Debug.Log(limb);
                 Debug.Log(arms.Length);
                 if (arms[limb].HasWeapon())
                 {
-                    Debug.Log("Weapon Dropped!");
                     arms[limb].DropWeapon();
 
                     switch (limb)
@@ -147,25 +144,38 @@ public class WeaponHandler : MonoBehaviour
     }
 
 
-    //public void GrabWeapon(float damage)
-    //{
-    //    LimbsHandler[] limbs = System.Array.FindAll(arms, c => !c.HasWeapon());
+    public void GrabWeapon(float damage)
+    {
+        LimbsHandler[] limbs = System.Array.FindAll(arms, c => !c.HasWeapon());
 
-    //    if (damage < 2000f * (limbs.Length))
-    //    {
-    //        GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
-    //        GameObject[] looseWeapons = System.Array.FindAll(weapons, c => c.layer == LayerMask.NameToLayer("Default"));
+        if (damage < 2000f * (limbs.Length))
+        {
+            GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
+            GameObject[] looseWeapons = System.Array.FindAll(weapons, c => c.layer == LayerMask.NameToLayer("Default"));
 
-    //        foreach(GameObject weapon in looseWeapons)
-    //        {
-    //            if((weapon.transform.position - transform.position).magnitude < 1.5f)
-    //            {
-    //                foreach(LimbsHandler limb in limbs)
-    //                {
-
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
+            foreach (GameObject weapon in looseWeapons)
+            {
+                if ((weapon.transform.position - transform.position).magnitude < 1.5f)
+                {
+                    foreach (LimbsHandler limb in limbs)
+                    {
+                        if(!limb.HasWeapon())
+                        {
+                            limb.GrabWeapon(weapon);
+                            switch (limb.transform.parent.name)
+                            {
+                                case "Bicep-Right":
+                                    RightArm = weapon;
+                                    break;
+                                case "Bicep-Left":
+                                    LeftArm = weapon;
+                                    break;
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

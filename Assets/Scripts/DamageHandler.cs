@@ -33,14 +33,14 @@ public class DamageHandler : MonoBehaviour
         Vector2 newVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
         oldVelocity.Set(newVelocity.x, newVelocity.y);
 
-        if (Input.GetKey(KeyCode.Y) && damage > 0)
+        if (Input.GetKey(KeyCode.Y))
         {
-            damage = damage - 50f;
+            damage -= 10f;
             if (damage < 0.0f)
             {
                 damage = 0.0f;
-                //weaponHandler.GrabWeapon(damage);
             }
+            weaponHandler.GrabWeapon(damage);
         }
     }
 
