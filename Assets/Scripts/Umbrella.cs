@@ -31,9 +31,7 @@ public class Umbrella : MonoBehaviour
             umbrella.GetComponentInChildren<PolygonCollider2D>().enabled = true;
             umbrella.GetComponentInChildren<Rigidbody2D>().simulated = true;
             umbrellaOpen.GetComponentInChildren<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-            gameObject.GetComponentInChildren<HingeJoint2D>().connectedBody = umbrellaOpen.GetComponentInChildren<Rigidbody2D>(); 
-
-
+            gameObject.GetComponentInChildren<HingeJoint2D>().connectedBody = umbrellaOpen.GetComponentInChildren<Rigidbody2D>();
 
             //gameObject.GetComponent<PolygonCollider2D>() = umbrellaOpen.GetComponentInChildren<PolygonCollider2D>(); 
 
@@ -49,9 +47,7 @@ public class Umbrella : MonoBehaviour
             umbrella.GetComponentInChildren<PolygonCollider2D>().enabled = true;
             umbrella.GetComponentInChildren<Rigidbody2D>().simulated = true;
             umbrellaOpen.GetComponentInChildren<SpriteRenderer>().color = new Color(0f, 0f, 0f, 0f);
-            gameObject.GetComponentInChildren<HingeJoint2D>().connectedBody = umbrella.GetComponentInChildren<Rigidbody2D>(); 
-
-
+            gameObject.GetComponentInChildren<HingeJoint2D>().connectedBody = umbrella.GetComponentInChildren<Rigidbody2D>();
 
             //gameObject.GetComponent<PolygonCollider2D>() = umbrellaOpen.GetComponentInChildren<PolygonCollider2D>(); 
 
