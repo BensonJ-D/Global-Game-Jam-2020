@@ -12,10 +12,12 @@ public class DamageHandler : MonoBehaviour
     public float healThreshold = 5.0f;
     public float damage = 0;    
     private float fudgeFactor = 40;
-
+    public AudioSource clang;
+    float clangCooldown;
     // Start is called before the first frame update
     void Start()
     {
+        clangCooldown = 0; 
         weaponHandler = transform.GetComponentInParent<WeaponHandler>();
     }
 
@@ -30,6 +32,7 @@ public class DamageHandler : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
+        clangCooldown -= Time.deltaTime;
         Vector2 newVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
         oldVelocity.Set(newVelocity.x, newVelocity.y);
         int mylayer = transform.gameObject.layer; 
@@ -55,6 +58,11 @@ public class DamageHandler : MonoBehaviour
     {
         string otherHit = other.gameObject.tag;
         if(otherHit!=gameObject.tag && otherHit != "Platform") {
+            if(clangCooldown <= 0)
+            {
+                clang.Play();
+                clangCooldown = 0.5f;
+            }
             Vector2 impulse = (gameObject.GetComponent<Rigidbody2D>().velocity - oldVelocity)*gameObject.GetComponent<Rigidbody2D>().mass;
             if (impulse.x >= 1f || impulse.y >= 1f)
             {
