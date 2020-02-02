@@ -6,6 +6,7 @@ public class WeaponHandler : MonoBehaviour
 {
     private LimbsHandler[] arms;
     public GameObject LeftArm, RightArm;
+    public SpringJoint2D LeftWeaponJoint, RightWeaponJoint;
     public float Force = 100000f; 
     public Sprite Facing, Left, Right, Up; 
     public int Player;
@@ -21,6 +22,10 @@ public class WeaponHandler : MonoBehaviour
     void Start()
     {
         arms = transform.GetComponentsInChildren<LimbsHandler>();
+        SpringJoint2D[] springJoints = transform.GetComponents<SpringJoint2D>();
+        LeftWeaponJoint = springJoints[0];
+        RightWeaponJoint = springJoints[1];
+
         coolDown = 0;
     }
 
@@ -130,9 +135,11 @@ public class WeaponHandler : MonoBehaviour
                     {
                         case 0:
                             RightArm = arms[limb].gameObject;
+                            RightWeaponJoint.enabled = false;
                             break;
                         case 1:
                             LeftArm = arms[limb].gameObject;
+                            LeftWeaponJoint.enabled = false;
                             break;
                         default:
                             break;
@@ -166,9 +173,13 @@ public class WeaponHandler : MonoBehaviour
                             {
                                 case "Bicep-Right":
                                     RightArm = weapon;
+                                    RightWeaponJoint.connectedBody = weapon.GetComponent<Rigidbody2D>();
+                                    RightWeaponJoint.enabled = true;
                                     break;
                                 case "Bicep-Left":
                                     LeftArm = weapon;
+                                    LeftWeaponJoint.connectedBody = weapon.GetComponent<Rigidbody2D>();
+                                    LeftWeaponJoint.enabled = true;
                                     break;
                             }
                             return;
