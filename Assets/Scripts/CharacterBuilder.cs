@@ -20,7 +20,7 @@ public class CharacterBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = gameObject.GetComponentInChildren<BasicMovement>().Player;
+        player = gameObject.GetComponent<BasicMovement>().Player;
         currentlySelecting = CurrentlySelecting.leftArm;
         //gameObject.GetComponentInChildren<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         Time.timeScale = 0;
@@ -57,7 +57,8 @@ public class CharacterBuilder : MonoBehaviour
             {
                 WeaponsLeft[weaponSelectedLeft].SetActive(true);
                 LeftArm.GetComponentInChildren<HingeJoint2D>().connectedBody = WeaponsLeft[weaponSelectedLeft].GetComponentInChildren<Rigidbody2D>();
-                gameObject.GetComponentInChildren<WeaponHandler>().LeftArm = WeaponsLeft[weaponSelectedLeft]; 
+                gameObject.GetComponentInChildren<WeaponHandler>().LeftArm = WeaponsLeft[weaponSelectedLeft];
+                gameObject.GetComponentInChildren<WeaponHandler>().LeftWeaponJoint.connectedBody = WeaponsLeft[weaponSelectedLeft].GetComponent<Rigidbody2D>();
                 for (int i = 0; i < WeaponsLeft.Length; i++)
                 {
                     if (i != weaponSelectedLeft)
@@ -78,6 +79,7 @@ public class CharacterBuilder : MonoBehaviour
                 WeaponsRight[weaponSelectedRight].SetActive(true);
                 RightArm.GetComponentInChildren<HingeJoint2D>().connectedBody = WeaponsRight[weaponSelectedRight].GetComponentInChildren<Rigidbody2D>();
                 gameObject.GetComponentInChildren<WeaponHandler>().RightArm = WeaponsRight[weaponSelectedRight];
+                gameObject.GetComponentInChildren<WeaponHandler>().RightWeaponJoint.connectedBody = WeaponsRight[weaponSelectedRight].GetComponent<Rigidbody2D>();
                 for (int i = 0; i < WeaponsRight.Length; i++)
                 {
                     if (i != weaponSelectedRight)

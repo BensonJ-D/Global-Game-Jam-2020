@@ -9,9 +9,9 @@ public class DamageHandler : MonoBehaviour
     WeaponHandler weaponHandler;
     public Vector2 oldVelocity;
     //public GameObject body;
-    public float healThreshold = 5.0f;
+    public float healThreshold = 1.0f;
     public float damage = 0;    
-    private float fudgeFactor = 40;
+    private float fudgeFactor = 80;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,18 @@ public class DamageHandler : MonoBehaviour
         int mylayer = transform.gameObject.layer; 
         String namedLayer = LayerMask.LayerToName(mylayer);
 
-        if (Input.GetButton(namedLayer+" Heal") && newVelocity.magnitude < healThreshold)
+        if (namedLayer == "Player2" && Input.GetButton("Player2 Heal") && newVelocity.magnitude < healThreshold)
+        {
+            damage -= 5f;
+            if (damage < 0.0f)
+            {
+                damage = 0.0f;
+            }
+            weaponHandler.GrabWeapon(damage);
+        }
+
+
+        if (namedLayer == "Player1" && Input.GetButton("Player1 Heal") && newVelocity.magnitude < healThreshold)
         {
             damage -= 5f;
             if (damage < 0.0f)
