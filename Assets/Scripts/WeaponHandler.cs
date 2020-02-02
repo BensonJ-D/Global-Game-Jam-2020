@@ -36,15 +36,14 @@ public class WeaponHandler : MonoBehaviour
             switch (attackDirection)
             {
                 case AttackDirection.left:
-                    LeftArm.transform.Rotate(90.0f, 0.0f, 0.0f, Space.Self);
                     LeftArm.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.left * Force, ForceMode2D.Impulse);
                     break;
                 case AttackDirection.right:
                     RightArm.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.right * Force, ForceMode2D.Impulse);
                     break;
                 case AttackDirection.up:
-                    LeftArm.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.up * Force, ForceMode2D.Impulse);
-                    RightArm.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.up * Force, ForceMode2D.Impulse);
+                    LeftArm.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.up * Force /2 , ForceMode2D.Impulse);
+                    RightArm.GetComponentInChildren<Rigidbody2D>().AddForce(Vector2.up * Force /2 , ForceMode2D.Impulse);
                     break; 
             }
         }
