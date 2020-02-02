@@ -17,8 +17,6 @@ public class RepairMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.Y) && damageHandler.damage > 0) {
-            damageHandler.damage = damageHandler.damage - 2;
-        }
+        
     }
 }

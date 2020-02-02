@@ -1,13 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DamageHandler : MonoBehaviour
 {
-
+    WeaponHandler weaponHandler;
     public Vector2 oldVelocity;
-    
     //public GameObject body;
 
     public float damage = 0;    
@@ -16,7 +16,7 @@ public class DamageHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        weaponHandler = transform.GetComponentInParent<WeaponHandler>();
     }
 
     // Update is called once per frame
@@ -32,6 +32,16 @@ public class DamageHandler : MonoBehaviour
     {
         Vector2 newVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
         oldVelocity.Set(newVelocity.x, newVelocity.y);
+
+        if (Input.GetKey(KeyCode.Y) && damage > 0)
+        {
+            damage = damage - 50f;
+            if (damage < 0.0f)
+            {
+                damage = 0.0f;
+                //weaponHandler.GrabWeapon(damage);
+            }
+        }
     }
 
     /// <summary>
@@ -40,7 +50,7 @@ public class DamageHandler : MonoBehaviour
     /// </summary>
     /// <param name="other">The Collision2D data associated with this collision.</param>
     void OnCollisionEnter2D(Collision2D other)
-{
+    {
         string otherHit = other.gameObject.tag;
         if(otherHit!=gameObject.tag && otherHit != "Platform") {
             Vector2 impulse = (gameObject.GetComponent<Rigidbody2D>().velocity - oldVelocity)*gameObject.GetComponent<Rigidbody2D>().mass;
@@ -49,6 +59,8 @@ public class DamageHandler : MonoBehaviour
                 damage += impulse.magnitude / gameObject.GetComponent<Rigidbody2D>().mass * fudgeFactor;
                 gameObject.GetComponent<Rigidbody2D>().AddForce(impulse.normalized * damage);
             }
+
+            weaponHandler.WeaponBreak(damage);
         }
     }
 }

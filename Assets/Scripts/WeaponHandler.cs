@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
+    private LimbsHandler[] arms;
     public GameObject LeftArm, RightArm;
     public float Force = 100000f; 
     public Sprite Facing, Left, Right, Up; 
@@ -19,6 +20,7 @@ public class WeaponHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        arms = transform.GetComponentsInChildren<LimbsHandler>();
         coolDown = 0;
     }
 
@@ -102,4 +104,68 @@ public class WeaponHandler : MonoBehaviour
     {
         
     }
+
+    public void WeaponBreak(float damage)
+    {
+        LimbsHandler[] equippedArms = System.Array.FindAll(arms, c => c.HasWeapon());
+
+        if (damage > 1500f * (3 - equippedArms.Length))
+        {
+            Debug.Log("Break risk!");
+            float percentage = (damage - 1500) / 5f;
+
+            Debug.Log(percentage);
+            bool limbBreak = Random.Range(0.0f, 100.0f) < percentage;
+
+            if (limbBreak)
+            {
+                Debug.Log("Breaking!");
+                int limb = (int)(Random.Range(0.0f, 100.0f) / 50f);
+
+                Debug.Log(limb);
+                Debug.Log(arms.Length);
+                if (arms[limb].HasWeapon())
+                {
+                    Debug.Log("Weapon Dropped!");
+                    arms[limb].DropWeapon();
+
+                    switch (limb)
+                    {
+                        case 0:
+                            RightArm = arms[limb].gameObject;
+                            break;
+                        case 1:
+                            LeftArm = arms[limb].gameObject;
+                            break;
+                        default:
+                            break;
+                    }
+                            
+                }
+            }
+        }
+    }
+
+
+    //public void GrabWeapon(float damage)
+    //{
+    //    LimbsHandler[] limbs = System.Array.FindAll(arms, c => !c.HasWeapon());
+
+    //    if (damage < 2000f * (limbs.Length))
+    //    {
+    //        GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
+    //        GameObject[] looseWeapons = System.Array.FindAll(weapons, c => c.layer == LayerMask.NameToLayer("Default"));
+
+    //        foreach(GameObject weapon in looseWeapons)
+    //        {
+    //            if((weapon.transform.position - transform.position).magnitude < 1.5f)
+    //            {
+    //                foreach(LimbsHandler limb in limbs)
+    //                {
+
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 }

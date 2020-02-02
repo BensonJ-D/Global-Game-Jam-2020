@@ -15,22 +15,12 @@ public class LimbsHandler : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.T) && weapon != null)
-        {
-            transform.GetComponent<HingeJoint2D>().enabled = false;
-            transform.GetComponent<activateArm>().enabled = true;
-
-            weapon.SetParent(null);
-            weapon.GetComponent<activateArm>().enabled = false;
-            weapon = null;
-        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         GameObject other = collision.gameObject;
         Transform otherTransform = other.transform;
-        Debug.Log("Contact with Weapon!");
 
         if (other.tag == "Weapon" && Input.GetKeyDown(KeyCode.Y))
         {
@@ -48,6 +38,35 @@ public class LimbsHandler : MonoBehaviour
             transform.GetComponent<activateArm>().enabled = false;
 
             weapon = transform.GetChild(0);
+        }
+    }
+
+    public void DropWeapon()
+    {
+        if (weapon != null)
+        {
+            transform.GetComponent<HingeJoint2D>().enabled = false;
+
+            weapon.SetParent(null);
+
+            int layer = LayerMask.NameToLayer("Default");
+            weapon.gameObject.layer = layer;
+            SetLayerRecursively(weapon.gameObject, layer);
+
+            weapon = null;
+        }
+    }
+
+    public bool HasWeapon()
+    {
+        return weapon != null;
+    }
+
+    public static void SetLayerRecursively(GameObject go, int layerNumber)
+    {
+        foreach (Transform trans in go.GetComponentsInChildren<Transform>(true))
+        {
+            trans.gameObject.layer = layerNumber;
         }
     }
 }
