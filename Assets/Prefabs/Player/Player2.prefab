@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2912757201547955357}
   - component: {fileID: 2912757201547955347}
   - component: {fileID: 2912757201547955346}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 3642253660756928311}
   - component: {fileID: 6112176843354630377}
   - component: {fileID: 8190874439582824982}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2912757202021006894}
-  m_LocalRotation: {x: -0, y: -0.0043123416, z: -0, w: 0.9999907}
+  m_LocalRotation: {x: 0, y: -0.0043109367, z: 0, w: 0.9999907}
   m_LocalPosition: {x: 7.64, y: 2.6, z: 0.13}
   m_LocalScale: {x: 1.1070701, y: 1.10707, z: 1.1070701}
   m_Children:
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumps: 0
-  Player: 1
+  Player: 2
   SelfPrefab: {fileID: 2912757202021006894}
 --- !u!114 &2912757202021006893
 MonoBehaviour:
@@ -432,7 +432,7 @@ SpringJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 2912757201547955357}
+  m_ConnectedRigidBody: {fileID: 2912757203071238063}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
@@ -452,14 +452,14 @@ SpringJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 6385680550534698700}
+  m_ConnectedRigidBody: {fileID: 2912757202027095730}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0.5, y: 0}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.5
+  m_Distance: 0.6
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!114 &6112176843354630377
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 2912757202027095728}
   - component: {fileID: 2912757202027095730}
   - component: {fileID: 2912757202027095731}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SpikeBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 2912757202377113578}
   - component: {fileID: 2912757202377113589}
   - component: {fileID: 2912757202377113588}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Bicep-Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: b31870f0321894e8f8f0fee4af6d4635, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -781,7 +781,7 @@ GameObject:
   - component: {fileID: 2912757202624213777}
   - component: {fileID: 2912757202624213783}
   - component: {fileID: 2912757202624213782}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: link3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 2912757202724480175}
   - component: {fileID: 2912757202724480173}
   - component: {fileID: 2912757202724480172}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: link1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 2912757203071238061}
   - component: {fileID: 2912757203071238060}
   - component: {fileID: 2912757203071238063}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 4103265526609025227, guid: ab952433ca16245cd9211207db439a23,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1207,7 +1207,7 @@ GameObject:
   - component: {fileID: 2912757203109819838}
   - component: {fileID: 2912757203109819833}
   - component: {fileID: 2912757203109819826}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Flail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1267,7 +1267,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -5806192328750252498, guid: 3a56bbd1af2ac4ff1a8009d9fbb45ec7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1385,7 +1385,7 @@ GameObject:
   - component: {fileID: 2912757203170664366}
   - component: {fileID: 2912757203170664361}
   - component: {fileID: 2612194472174814200}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Bicep-Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 2912757203349051525}
   - component: {fileID: 2912757203349051643}
   - component: {fileID: 2912757203349051642}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: link2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1700,7 +1700,7 @@ GameObject:
   - component: {fileID: 6385680550534698674}
   - component: {fileID: 6385680550534698700}
   - component: {fileID: 6385680550534698675}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1760,7 +1760,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: b31870f0321894e8f8f0fee4af6d4635, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
